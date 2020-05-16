@@ -5,7 +5,7 @@ class SettingScreen extends Component {
 
     render() {
         return (
-            <View>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'#c324' }}>
                 <Text>SettingScreen</Text>
             </View>
         )
