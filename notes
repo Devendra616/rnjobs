@@ -1,3 +1,20 @@
 npm install @react-navigation/native
 npm install @react-navigation/bottom-tabs
 bottom tab navigation from react navigation
+
+class property vs instance property
+use static keyword to define class level property.
+This is usually used to define routes for screen
+
+With React Navigation 5.x, we need to pass the configuration when defining the screen:
+<Stack.Screen
+  name="Profile"
+  component={ProfileScreen}
+  options={{ headerShown: false }}
+/>
+
+we can't use 
+static navigationOptions = {
+    headerShown: false,
+  };
+https://reactnavigation.org/docs/upgrading-from-4.x/
