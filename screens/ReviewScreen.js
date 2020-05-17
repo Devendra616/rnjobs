@@ -7,7 +7,7 @@ class ReviewScreen extends Component {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'#22f' ,margin: 20 }}>
-                <Text>ReviewScreen2</Text>                
+                <Text>ReviewScreen</Text>                
             </View>
         )
     }
