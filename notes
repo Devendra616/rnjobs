@@ -1,6 +1,3 @@
-npm install @react-navigation/native
-npm install @react-navigation/bottom-tabs
-bottom tab navigation from react navigation
 
 class property vs instance property
 use static keyword to define class level property.

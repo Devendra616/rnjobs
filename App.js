@@ -1,5 +1,8 @@
 import React, { Component, } from 'react';
 import { StyleSheet,Platform } from 'react-native';
+import {Provider} from 'react-redux';
+import store from './store';
+
 import {Button} from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -11,7 +14,6 @@ import DeckScreen from './screens/DeckScreen';
 import ReviewScreen from './screens/ReviewScreen';
 import SettingScreen from './screens/SettingScreen';
 import Constants from "expo-constants";
-
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -67,9 +69,11 @@ class App extends Component {
     
 
     return (     
-       <NavigationContainer>
-          <MainNavigator />
-        </NavigationContainer>     
+      <Provider store={store}>
+        <NavigationContainer>
+            <MainNavigator />
+        </NavigationContainer>
+      </Provider>     
     )
   }
 }
