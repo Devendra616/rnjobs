@@ -6,7 +6,7 @@ Technologies used :
  - React Native
  - Firebase (database and authentication)
  - Twilio (send OTP message)
- - Map
+ - Map : react-native-maps
  - Navigation		
 
 # Installation
@@ -103,7 +103,7 @@ C --> D
 ```
 
 # Problems and Resolutions 
- Customising the navigation header/bar. Each screen can configure various aspects about how it gets presented in the navigator that renders it.
+ - **Customising the navigation header/bar.** Each screen can configure various aspects about how it gets presented in the navigator that renders it.
  In reactnavigation <v5 we could use 
 ```javascript
 	 class ReviewScreen extends Component {
@@ -139,3 +139,15 @@ C --> D
         })}
 	/>
 ```
+
+- **Map screen was showing blank with no errors**
+    
+    Solution was to provide width and height in style configuration.
+
+    ```javascript
+        mapStyle: {
+            width: Dimensions.get('window').width,
+            height: Dimensions.get('window').height,
+        },
+    ```    
+    ```Dimensions``` being imported from 'react-native'
