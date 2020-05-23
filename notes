@@ -46,3 +46,6 @@ Save the key in the app.json file.
     },
   }
 }
+
+//dont want map to pinch zoom in or zoom-out when swapped so just make it only readable element
+map with scrollEnabled={false}

@@ -41,7 +41,7 @@ const doFacebookLogin = async (dispatch) => {
         }
 
         await AsyncStorage.setItem(STORAGE_KEY,token);
-        console.log('---------',token);
+  
         return dispatch({type:FACEBOOK_LOGIN_SUCCESS, payload:token});
     } catch (err)     {
         console.log(`Facebook Login Error: ${err}`,);

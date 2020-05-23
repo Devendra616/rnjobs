@@ -12,6 +12,7 @@ const JOB_QUERY_PARAMS = {
     count:15, //no of results to fetch
     sort: 'DD', //Date posted in desc order,
     page:1,
+    per_page:10//no of records per page
 }
 
 const buildJobsUrl = city => {
@@ -19,17 +20,21 @@ const buildJobsUrl = city => {
     return `${JOB_ROOT_URL}${query}`;
 }
 
-export const fetchJobs = (region) => {
+export const fetchJobs = (region, callback) => {
     return async (dispatch) => {
         try {
             let jsonResult = await Geocoder.from(region.latitude, region.longitude);
+            
             let city = await jsonResult.results[0].address_components[6]['long_name']; //get city long name
            
            // = await geocoding(region); console.log(222222); console.log(zip)
             const url = buildJobsUrl(city);
-            const {data} = await axios.get(url); 
-            
+            const {data} = await axios.get(url);  
+            if(!data || data.length ===0 ) {
+                data = [];
+            }
             dispatch({type: FETCH_JOBS, payload: data});
+            callback();
         } catch(err) {
             console.log("Error occured in fetching jobs:",err);
         }

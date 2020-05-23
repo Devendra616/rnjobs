@@ -26,7 +26,10 @@ class MapScreen extends Component {
     }
 
     onSearch = () => {
-        this.props.fetchJobs(this.state.region);
+        this.props.fetchJobs(this.state.region, ()=> {
+            // callback navigate to myjobs
+            this.props.navigation.navigate('Main', {screen: 'Deck'});
+        });
     }
 
     render() {
