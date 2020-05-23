@@ -18,3 +18,31 @@ https://reactnavigation.org/docs/upgrading-from-4.x/
 
 onslide pagingEnabled:
 When true, the scroll view stops on multiples of the scroll view's size when scrolling. This can be used for horizontal pagination.
+
+npm qs to parse object to query string
+latlng-to-zip to convert latitude-longitude combination to zipcode
+
+I am using github jobs as no API key is required
+
+
+You must use an API key to authenticate each request to Google Maps Platform APIs
+For calling google maps location data, we need API key. It can be generated from 
+https://developers.google.com/maps/documentation/geocoding/get-api-key
+I have set restriction for the key to be used only through my expo ip 192.168.43.125
+Save the key in the app.json file.
+{
+  "expo": {
+    "ios": {
+      "config": {
+        "googleMapsApiKey": "YOUR_GOOGLE_MAP_API_KEY_HERE"
+      }
+    },
+    "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "YOUR_GOOGLE_MAP_API_KEY_HERE"
+        }
+      }
+    },
+  }
+}

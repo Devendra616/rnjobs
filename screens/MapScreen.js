@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {View,Text, StyleSheet, Dimensions, ActivityIndicator} from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView ,{ PROVIDER_GOOGLE }  from 'react-native-maps';
+import {connect} from 'react-redux';
+import {Button} from 'react-native-elements';
+import * as actions from '../actions';
 
-
-
-
+const MAP_API_KEY='AIzaSyB3e5mqiIBJ2HQllzK4x0d2hykLw3qiLC8'; //From google map
 class MapScreen extends Component {
+
     state = {
         region :{
             latitude: 37.78825,
@@ -23,6 +25,10 @@ class MapScreen extends Component {
         this.setState({region})
     }
 
+    onSearch = () => {
+        this.props.fetchJobs(this.state.region);
+    }
+
     render() {
         if(!this.state.isMapLoaded) {
             return (
@@ -35,9 +41,22 @@ class MapScreen extends Component {
         return (
             <View  style={styles.container}>
                 <MapView style={styles.mapStyle} 
+                    provider={ PROVIDER_GOOGLE }
                     region={this.state.region} 
+                    apiKey={MAP_API_KEY}
                     onRegionChangeComplete={this.onRegionChangeComplete}
                 />
+                <View styles={styles.buttonContainer}>
+                    <Button 
+                        title="Search This Area"
+                        backgroundColor="#009688"
+                        large
+                        icon={{name:'search'}}
+                        onPress={this.onSearch}
+                        apiKey={MAP_API_KEY}
+                        backgroundColor='red'
+                    />
+                </View>
             </View>
         )
     }
@@ -46,14 +65,20 @@ class MapScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        justifyContent:"center",
-        alignItems:"center",
+        justifyContent:"center",       
         backgroundColor:'pink'
       },
       mapStyle: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        flex:1,
+        width: '100%',
+        height: '100%',
       },
+      buttonContainer : {
+        position:'absolute',
+        left:0,
+        right:0,
+        alignSelf:'flex-end'        
+      }
 });
 
-export default MapScreen;
+export default connect(null, actions)(MapScreen);
