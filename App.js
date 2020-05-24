@@ -54,12 +54,12 @@ function ReviewNavigator() {
 
 function MainNavigator() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={WelcomeScreen} />
-      <Tab.Screen name="Auth" component={AuthScreen} />
-      <Tab.Screen name="Main" component={mainContainerNavigator} />
+    <Stack.Navigator >
+      <Stack.Screen name="Home" component={WelcomeScreen} />
+      <Stack.Screen name="Auth" component={AuthScreen} />
+      <Stack.Screen name="Main" component={mainContainerNavigator} />
      
-    </Tab.Navigator>
+    </Stack.Navigator>
   )
 }
 
