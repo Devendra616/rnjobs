@@ -99,7 +99,7 @@ class Swipe extends Component {
             return this.props.renderNoMoreCards();
         }
         
-        return this.props.data.map((item,index) =>{
+        const deck = this.props.data.map((item,index) =>{
             //If card is already swipped right/left then don't show them
             if(index < this.state.currentIndex) {
                 return null;
@@ -118,12 +118,13 @@ class Swipe extends Component {
             
             //other items down the list, make them just card
             return (
-                    <Animated.View style={[styles.cardStack,{top:12*(index-this.state.currentIndex)}]} 
+                    <Animated.View style={[styles.cardStack,{top:10*(index-this.state.currentIndex), zIndex:-index}]} 
                                     key={item.id}>
                         {this.props.renderCard(item)}
                     </Animated.View>
                     );
                 }).reverse();
+        return deck;
     }
 
     render() {
