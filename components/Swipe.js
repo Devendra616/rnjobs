@@ -11,7 +11,8 @@ class Swipe extends Component {
     // To avoid throwing errorn. Called when no props with that name is passed
     static defaultProps = {
         onSwipeRight : () => {},
-        onSwipeLeft : () => {}
+        onSwipeLeft : () => {},
+        keyProp : 'id' //default key value
     }
 
     constructor(props){
@@ -108,7 +109,7 @@ class Swipe extends Component {
             //make only top card dragable, attach handler to currentCard
             if(index=== this.state.currentIndex) {
                return (<Animated.View 
-                        key={item.id}
+                        key={item[this.props.keyProps]}
                         style={ [ this.getCardStyle(),styles.cardStack]}  
                         {...this.state.panResponder.panHandlers}
                         >
@@ -119,7 +120,7 @@ class Swipe extends Component {
             //other items down the list, make them just card
             return (
                     <Animated.View style={[styles.cardStack,{top:10*(index-this.state.currentIndex), zIndex:-index}]} 
-                                    key={item.id}>
+                                    key={item[this.props.keyProps]}>
                         {this.props.renderCard(item)}
                     </Animated.View>
                     );
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
     cardStack:{
         position:'absolute',
         width:SCREEN_WIDTH,
-        zIndex:100
+        zIndex:100,
     }
 })
 

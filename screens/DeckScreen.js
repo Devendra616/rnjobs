@@ -5,6 +5,7 @@ import {Button, Card,} from 'react-native-elements';
 import MapView ,{ PROVIDER_GOOGLE }  from 'react-native-maps';
 import {connect} from 'react-redux';
 import moment from 'moment';
+import * as actions from '../actions';
 
 const SNIPPET_LENGTH=100;
 class DeckScreen extends Component {
@@ -81,11 +82,13 @@ class DeckScreen extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1 }}>
+            <View style={{ marginTop:10}}>
                 <Swipe 
+                    keyProp="id" //key to use as id key for cards, may vary acc to api eg jobkey in monster.com
                     data={this.props.jobs}
                     renderCard = {this.renderCard}
                     renderNoMoreCards = {this.renderNoMoreCards}
+                    onSwipeRight = {job => this.props.likeJob(job)}
                 />
             </View>
         )
@@ -105,4 +108,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default connect(mapStateToProps,null)(DeckScreen);
+export default connect(mapStateToProps,actions)(DeckScreen);

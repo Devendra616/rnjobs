@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {FETCH_JOBS} from './types';
+import {FETCH_JOBS, LIKE_JOB} from './types';
 //import reverseGeocode  from 'latlng-to-zip';
 import Geocoder from 'react-native-geocoding';
 import qs from 'qs';
@@ -40,3 +40,10 @@ export const fetchJobs = (region, callback) => {
         }
     }
 }
+
+export const likeJob = (job) => {
+    return {
+        payload:job,
+        type:LIKE_JOB
+    };
+};
