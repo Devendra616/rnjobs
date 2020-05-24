@@ -29,7 +29,7 @@ class DeckScreen extends Component {
         
         description = shortenString(description);
         const duration = moment(created_at).fromNow();
-        console.log(created_at+"****"+duration);
+        
         // Sanitize any html elements like <b></b><p></p><li></li>
         const summary = description.replace(/<b>/g,'')
                                    .replace(/<\/b>/g,'')
@@ -57,7 +57,7 @@ class DeckScreen extends Component {
                     <MapView
                         scrollEnabled={false}
                         style={{flex:1}}
-                        cacheEnabled={Platform.OS === 'android'?true:false}
+                        cacheEnabled={Platform.OS === 'android'}
                         //initialRegion={initialRegion}
                     />                                  
                 </View>
@@ -103,7 +103,7 @@ function mapStateToProps({jobs}) {
 const styles = StyleSheet.create({
     detailWrapper:{
         flexDirection:'row',
-        justifyContent:'space-between',
+        justifyContent:'space-around',
         marginBottom:10
     },
 });

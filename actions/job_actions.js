@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {FETCH_JOBS, LIKE_JOB} from './types';
+import {FETCH_JOBS, LIKE_JOB,CLEAR_LIKED_JOBS} from './types';
 //import reverseGeocode  from 'latlng-to-zip';
 import Geocoder from 'react-native-geocoding';
 import qs from 'qs';
@@ -47,3 +47,7 @@ export const likeJob = (job) => {
         type:LIKE_JOB
     };
 };
+
+export const clearLikedJobs = () => {
+    return {type:CLEAR_LIKED_JOBS };
+}

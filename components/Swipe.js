@@ -42,14 +42,14 @@ class Swipe extends Component {
     }
 
     // Update index if new data has arrived
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if(nextProps.data !== this.props.data) {
             this.setState({currentIndex:0});
         }
     }
 
     // smooth animation of cards to lift up when cards moved top
-    componentWillUpdate() {
+    componentDidUpdate() {
         UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
         LayoutAnimation.spring();
     }
@@ -101,6 +101,7 @@ class Swipe extends Component {
         }
         
         const deck = this.props.data.map((item,index) =>{
+            
             //If card is already swipped right/left then don't show them
             if(index < this.state.currentIndex) {
                 return null;
@@ -109,7 +110,7 @@ class Swipe extends Component {
             //make only top card dragable, attach handler to currentCard
             if(index=== this.state.currentIndex) {
                return (<Animated.View 
-                        key={item[this.props.keyProps]}
+                        key={item[this.props.keyProp]}
                         style={ [ this.getCardStyle(),styles.cardStack]}  
                         {...this.state.panResponder.panHandlers}
                         >
@@ -120,7 +121,7 @@ class Swipe extends Component {
             //other items down the list, make them just card
             return (
                     <Animated.View style={[styles.cardStack,{top:10*(index-this.state.currentIndex), zIndex:-index}]} 
-                                    key={item[this.props.keyProps]}>
+                                    key={item[this.props.keyProp]}>
                         {this.props.renderCard(item)}
                     </Animated.View>
                     );
