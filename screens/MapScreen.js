@@ -54,7 +54,7 @@ class MapScreen extends Component {
                         title="Search This Area"
                         backgroundColor="#009688"
                         large
-                        icon={{name:'search'}}
+                        icon={{name:'search', color:'white'}}
                         onPress={this.onSearch}
                         apiKey={MAP_API_KEY}
                         backgroundColor='red'

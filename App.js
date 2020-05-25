@@ -3,7 +3,7 @@ import { StyleSheet,Platform } from 'react-native';
 import {Provider} from 'react-redux';
 import store from './store';
 
-import {Button} from 'react-native-elements';
+import {Button, Icon} from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack'
@@ -20,10 +20,39 @@ const Stack = createStackNavigator();
 
 function mainContainerNavigator() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Map" component={MapScreen} />
-      <Tab.Screen name="Deck" component={DeckScreen} />
-      <Tab.Screen name="Review Jobs" component={ReviewNavigator} />
+    <Tab.Navigator
+      tabBarOptions={{
+        labelStyle: {fontSize:12},        
+        labelPosition:'below-icon'
+      }}
+    >
+      <Tab.Screen name="Map" 
+                  component={MapScreen} 
+                  options={{
+                    tabBarLabel:'Map',
+                    tabBarIcon:({color, size}) => {
+                      return <Icon name="my-location" size={size} color={color} />
+                    }
+                  }}                  
+                  />
+      <Tab.Screen name="Deck" 
+                  component={DeckScreen} 
+                  options={{
+                    tabBarLabel:'Jobs',
+                    tabBarIcon:({color, size}) => {
+                      return <Icon name="description" size={size} color={color} />
+                    }
+                  }}
+                  />
+      <Tab.Screen name="Review Jobs" 
+                  component={ReviewNavigator} 
+                  options={{
+                    tabBarLabel:'Review Jobs',
+                    tabBarIcon:({color, size}) => {
+                      return <Icon name="favorite" size={size} color={color} />
+                    }
+                  }}  
+                  />
     </Tab.Navigator>
   )
 }
@@ -64,11 +93,10 @@ function MainNavigator() {
 }
 
 
-class App extends Component {
-  render() {
+class App extends Component { 
+  render() {    
     
-
-    return (     
+    return (   
       <Provider store={store}>
         <NavigationContainer>
             <MainNavigator />
