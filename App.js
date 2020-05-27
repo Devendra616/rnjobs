@@ -1,7 +1,7 @@
 import React, { Component, } from 'react';
 import { StyleSheet,Platform } from 'react-native';
 import {Provider} from 'react-redux';
-import store from './store';
+import {store, persistor} from './store';
 
 import {Button, Icon} from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
@@ -14,6 +14,8 @@ import DeckScreen from './screens/DeckScreen';
 import ReviewScreen from './screens/ReviewScreen';
 import SettingScreen from './screens/SettingScreen';
 import Constants from "expo-constants";
+import { PersistGate } from 'redux-persist/integration/react';
+import {AppLoading} from 'expo';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -95,12 +97,14 @@ function MainNavigator() {
 
 class App extends Component { 
   render() {    
-    
+    //const myStore = getStore();
     return (   
       <Provider store={store}>
-        <NavigationContainer>
-            <MainNavigator />
-        </NavigationContainer>
+        <PersistGate loading={null} persistor={persistor} >
+          <NavigationContainer>
+              <MainNavigator />
+          </NavigationContainer>
+        </PersistGate>
       </Provider>     
     )
   }

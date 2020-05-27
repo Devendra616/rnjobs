@@ -151,3 +151,8 @@ C --> D
         },
     ```    
     ```Dimensions``` being imported from 'react-native'
+
+- **AsycStorage is depricated**
+   Use react-native async-storage
+   ```npm i @react-native-community/async-storage```
+   

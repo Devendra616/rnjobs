@@ -53,3 +53,6 @@ map with scrollEnabled={false}
 
 https://reactnavigation.org/docs/screen-options
 Specifying options for screens
+
+To delete the stored data with redux-persist for testing or moving to production , add .purge() to the end of persistStore
+let persistor = persistStore(store).purge();
