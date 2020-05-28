@@ -1,5 +1,5 @@
 import React, { Component, } from 'react';
-import { StyleSheet,Platform } from 'react-native';
+import { StyleSheet,Platform, Alert } from 'react-native';
 import {Provider} from 'react-redux';
 import {store, persistor} from './store';
 
@@ -15,7 +15,8 @@ import ReviewScreen from './screens/ReviewScreen';
 import SettingScreen from './screens/SettingScreen';
 import Constants from "expo-constants";
 import { PersistGate } from 'redux-persist/integration/react';
-import {AppLoading} from 'expo';
+import {AppLoading, Notifications} from 'expo';
+import registerForPushNotifications from './services/pushNotifications';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -96,11 +97,26 @@ function MainNavigator() {
 
 
 class App extends Component { 
+
+  componentDidMount() {
+    registerForPushNotifications();
+    Notifications.addListener( (notification) => {
+      const {data:{text}, origin} = notification;
+      if(origin === 'received' && text) {
+        Alert.alert(
+          'New Notification', //titile
+          text, //message
+          [{text:'OK'}] //button
+        )
+      }
+    });
+  }
+
   render() {    
     //const myStore = getStore();
     return (   
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor} >
+        <PersistGate loading={<AppLoading />} persistor={persistor} >
           <NavigationContainer>
               <MainNavigator />
           </NavigationContainer>
