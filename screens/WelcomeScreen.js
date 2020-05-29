@@ -36,7 +36,7 @@ class WelcomeScreen extends Component {
         }
 
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+            <View style={styles.container}>
                 <Slide data={SLIDE_DATA} onComplete= {this.onSlideComplete} />
             </View>
         )
@@ -44,7 +44,11 @@ class WelcomeScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-    
+    container: {
+        flex: 1, 
+        justifyContent: 'center', 
+        alignItems: 'center',
+    }
 });
 
 export default WelcomeScreen;

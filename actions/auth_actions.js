@@ -1,13 +1,12 @@
 import {AsyncStorage} from 'react-native';
 import * as Facebook from 'expo-facebook';
-
+import {FACEBOOK_APPID} from 'react-native-dotenv';
 import {
     FACEBOOK_LOGIN_SUCCESS,
     FACEBOOK_LOGIN_FAIL
 }    
 from './types';
 
-const APP_ID = '866982700380093';
 const STORAGE_KEY = '@fb_token'
 /* 
     How to use AsyncStorage
@@ -31,7 +30,7 @@ export const facebookLogin = () => {
 
 const doFacebookLogin = async (dispatch) => {
     try {
-        await Facebook.initializeAsync(APP_ID);
+        await Facebook.initializeAsync(FACEBOOK_APPID);
         let result = await Facebook.logInWithReadPermissionsAsync({
             permissions: ['public_profile'],
           });

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {View,Text, StyleSheet, Dimensions, ActivityIndicator} from 'react-native';
+import {View,Alert, StyleSheet, Dimensions, ActivityIndicator} from 'react-native';
 import MapView ,{ PROVIDER_GOOGLE }  from 'react-native-maps';
 import {connect} from 'react-redux';
 import {Button} from 'react-native-elements';
 import * as actions from '../actions';
+import {MAP_API_KEY} from 'react-native-dotenv';
 
-const MAP_API_KEY='AIzaSyB3e5mqiIBJ2HQllzK4x0d2hykLw3qiLC8'; //From google map
 class MapScreen extends Component {
 
     state = {
@@ -15,7 +15,8 @@ class MapScreen extends Component {
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
             },
-        isMapLoaded:false   
+        isMapLoaded:false ,
+        isSearching:false  
     }
     componentDidMount() {
         this.setState({isMapLoaded:true});
@@ -25,22 +26,39 @@ class MapScreen extends Component {
         this.setState({region})
     }
 
-    onSearch = () => {
-        this.props.fetchJobs(this.state.region, ()=> {
-            // callback navigate to myjobs
-            this.props.navigation.navigate('Main', {screen: 'Deck'});
+    onSearch = () => { this.setState({isSearching:true});
+        this.props.fetchJobs(this.state.region, (isSuccess)=> {
+            this.setState({isSearching:false});
+            if(!isSuccess) {
+                // some error occured
+            Alert.alert("Try again later!",
+                        "No jobs fetched from that area",
+                        [{text:'OK', onPress:()=>{console.log('No jobs in that area')}}]
+            )
+            } else {
+                // callback navigate to myjobs
+                this.props.navigation.navigate('Main', {screen: 'Deck'});
+            }            
         });
     }
 
-    render() {
+    render() {console.log(this.state.isSearching);
         if(!this.state.isMapLoaded) {
             return (
                 <View style={styles.container} >
-                    <ActivityIndicator size='large' />
+                    <ActivityIndicator size="large" color="#0000ff" />
                 </View>
             )
         }
 
+        if(this.state.isSearching) {
+            return (
+                <View style={styles.container} >
+                    <ActivityIndicator size="large" color="#0000ff" />
+                </View>
+            )
+        }
+       
         return (
             <View  style={styles.container}>
                 <MapView style={styles.mapStyle} 

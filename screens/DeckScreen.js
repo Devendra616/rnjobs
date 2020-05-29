@@ -69,8 +69,7 @@ class DeckScreen extends Component {
             </Card>
         )
     }
-
-    
+  
     //using arrow function to handle this in onPress button
     renderNoMoreCards = () => {
         return(
@@ -100,7 +99,6 @@ class DeckScreen extends Component {
         )
     }
 }
-
 // state at reducers->index.js has auth and jobs
 function mapStateToProps({jobs}) {
        return {jobs};

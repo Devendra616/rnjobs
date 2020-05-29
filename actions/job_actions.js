@@ -3,8 +3,9 @@ import {FETCH_JOBS, LIKE_JOB,CLEAR_LIKED_JOBS} from './types';
 //import reverseGeocode  from 'latlng-to-zip';
 import Geocoder from 'react-native-geocoding';
 import qs from 'qs';
+import {MAP_API_KEY} from 'react-native-dotenv';
 
-Geocoder.init('AIzaSyAznWv5zGHg_bSxD43fUkjhaJ8YSDA5Z-c');
+Geocoder.init(MAP_API_KEY);
 const JOB_ROOT_URL = "https://jobs.github.com/positions.json?"
 const JOB_QUERY_PARAMS = {
     description:'javascript',//job pattern to search
@@ -12,7 +13,7 @@ const JOB_QUERY_PARAMS = {
     count:15, //no of results to fetch
     sort: 'DD', //Date posted in desc order,
     page:1,
-    per_page:10//no of records per page
+    per_page:20//no of records per page
 }
 
 const buildJobsUrl = city => {
@@ -34,9 +35,10 @@ export const fetchJobs = (region, callback) => {
                 data = [];
             }
             dispatch({type: FETCH_JOBS, payload: data});
-            callback();
+            callback(true); //true: jobs fetched
         } catch(err) {
             console.log("Error occured in fetching jobs:",err);
+            callback(false); //false: jobs not fetched
         }
     }
 }
