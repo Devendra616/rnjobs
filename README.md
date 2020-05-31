@@ -1,13 +1,14 @@
 # React Native Job Board
 
 An application in React Native to search Job listings near your area. User will go to map and get his location where to search. It will trigger API search for jobs in that location. User can then apply for jobs, from the search list based on description.
+
 Technologies used : 
 
  - React Native
- - Firebase (database and authentication)
- - Twilio (send OTP message)
  - Map : react-native-maps
- - Navigation		
+ - Navigation
+ - Facebook Authentication
+ - Github jobs		
 
 # Installation
 On your terminal type
@@ -32,10 +33,10 @@ Welcome screen shows manual for the App. Three or more slides are shown with a b
 Auth screen is for authenication of the user using facebook login. We used expo-facebook authentication method.
 
 ### Map Screen
-User sets location on the map to view jobs. Once the location is set, the user gets job listings for nearby location set on the map screen.
+User sets location on the map to view jobs. Once the location is set, the user gets job listings for nearby location set on the map screen. Github jobs has jobs listing mostly from Americal and Europe. I did not find any jobs in India at time of testing.
 
 ### Deck Screen
-The Deck screen shows the listings of filtered jobs. The deck has cards of jobs which can be **swiped left** to *discard* and **swiped right** to *apply*. Cards swiped right move to myJobs which is review screen.
+The Deck screen shows the listings of jobs for that location. Presently, the jobs shows only for **Javascript** profile. The deck has cards of jobs which can be **swiped left** to *discard* and **swiped right** to *apply*. Cards swiped right move to myJobs which is review screen.
 
 ### Review Screen
 The Review Screen is the myJobs screen where we get jobs which we have filtered to apply. 
@@ -48,7 +49,6 @@ The user setting screen is where we can clear map location and myJobs lists.
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcblx0QVtBdXRoIFNjcmVlbl0gLS0-fEluaXRpYXRlIEZiIGxvZ2lufCBCe0lzIEF1dGhlbnRpY2F0ZWR9XG5cdEIgLS0-fFllc3wgQ1tTZW5kIHRvIE1hcFNjcmVlbl1cblx0QiAtLT58Tm98IERbQXR0ZW1wdCB0byBsb2dpbiB3aXRoIEZhY2Vib29rXVxuXHREIC0tPiBFW0dldCBUb2tlbl1cblx0RSAtLT58U2F2ZSBUb2tlbiBmb3IgZnV0dXJlfCBDXG5cdFx0XHRcdFx0IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcblx0QVtBdXRoIFNjcmVlbl0gLS0-fEluaXRpYXRlIEZiIGxvZ2lufCBCe0lzIEF1dGhlbnRpY2F0ZWR9XG5cdEIgLS0-fFllc3wgQ1tTZW5kIHRvIE1hcFNjcmVlbl1cblx0QiAtLT58Tm98IERbQXR0ZW1wdCB0byBsb2dpbiB3aXRoIEZhY2Vib29rXVxuXHREIC0tPiBFW0dldCBUb2tlbl1cblx0RSAtLT58U2F2ZSBUb2tlbiBmb3IgZnV0dXJlfCBDXG5cdFx0XHRcdFx0IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
 
 
-
 # Settings for facebook authenication on Expo
 Create a facebook developer account if not already have. Create a new app so that you get App ID and secret key.
 From Developer Console: Goto Settings -> Basic -> Add Platform.
@@ -57,11 +57,9 @@ From Developer Console: Goto Settings -> Basic -> Add Platform.
 Save the changes.
 
 In your code 
-use Facebook API from expo-facebook 
-    ```expo install expo-facebook```
+use Facebook API from expo-facebook  **```expo install expo-facebook```**
     
-    ```javascript
-            import {Facebook} from 'expo';
+    ```javascript import {Facebook} from 'expo';
 
             const loginFun = async () => {
                 const [type,token] = await Facebook.logInWithReadPermissionsAsync('APP_ID',
@@ -156,3 +154,7 @@ C --> D
    Use react-native async-storage
    ```npm i @react-native-community/async-storage```
    
+
+# Scope of Improvement in next version
+- A text input where user can set his criteria to search job terms like Java, React, Mobile, .Net etc. Presetly there is search for Javascript only.
+- 

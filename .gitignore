@@ -15,3 +15,5 @@ web-report/
 
 # environment variables
 .env
+
+dist/

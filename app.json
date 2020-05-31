@@ -27,6 +27,8 @@
     },
     "android": {
       "package": "com.devsingh.rnjobs"
-    }
+    },
+    "description": "React Native Expo project for searching jobs in some areas via github jobs api",
+    "githubUrl": "https://github.com/Devendra616/rnjobs"
   }
 }
