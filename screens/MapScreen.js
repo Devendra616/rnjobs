@@ -42,7 +42,7 @@ class MapScreen extends Component {
         });
     }
 
-    render() {console.log(this.state.isSearching);
+    render() {
         if(!this.state.isMapLoaded) {
             return (
                 <View style={styles.container} >

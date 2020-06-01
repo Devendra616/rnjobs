@@ -13,14 +13,14 @@ const registerForPushNotifications =  async () => {
     
      //check if token already present
     let previousToken = await AsyncStorage.getItem(STORE_KEY);
-    console.log('previous', previousToken);
+    
     if(previousToken) {
         return;
     } else {
         // take permission for sending push notification and generate token
         try{ 
             let {status} = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-            console.log(status);
+            
             if(status !== 'granted') {
                 alert('You will not be notified!');
                 return;

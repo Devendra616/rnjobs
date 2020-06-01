@@ -26,7 +26,8 @@ function mainContainerNavigator() {
     <Tab.Navigator
       tabBarOptions={{
         labelStyle: {fontSize:12},        
-        labelPosition:'below-icon'
+        labelPosition:'below-icon',
+        tabBarVisible:false
       }}
     >
       <Tab.Screen name="Map" 
@@ -86,12 +87,12 @@ function ReviewNavigator() {
 
 function MainNavigator() {
   return (
-    <Stack.Navigator >
-      <Stack.Screen name="Home" component={WelcomeScreen} />
-      <Stack.Screen name="Auth" component={AuthScreen} />
-      <Stack.Screen name="Main" component={mainContainerNavigator} />
+    <Tab.Navigator >
+      <Tab.Screen name="Home" component={WelcomeScreen} options={{tabBarVisible:false}} />
+      <Tab.Screen name="Auth" component={AuthScreen} options={{tabBarVisible:false}}/>
+      <Tab.Screen name="Main" component={mainContainerNavigator} options={{tabBarVisible:false}}/>
      
-    </Stack.Navigator>
+    </Tab.Navigator>
   )
 }
 

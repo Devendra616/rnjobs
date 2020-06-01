@@ -4,10 +4,11 @@ import {Button} from 'react-native-elements';
 
 const SCREEN_WIDTH= Dimensions.get('window').width;
 class Slide extends Component {
-
+    
     // Show button on last slide
     renderButton(index) {
-        if(index === this.props.data.length -1) {
+        const lengthOfList = this.props.data.length;
+        if(index === lengthOfList -1) {
             return (
                 <View style={{marginTop:15}}>
                     <Button title='Onwards!' raised 
@@ -16,6 +17,9 @@ class Slide extends Component {
                     />
                 </View>
             )
+        } else { //Show bullet icon for list items other than last one
+            const bullet = '\u2B24'.repeat(lengthOfList - index)
+            return <Text style={styles.bullet}>{bullet}</Text>
         }
     }
 
@@ -55,6 +59,11 @@ const styles = StyleSheet.create({
     },
     button:{
         backgroundColor:'#0288D1',        
+    },
+    bullet:{
+        color:'white',
+        marginTop:5,
+        letterSpacing:5
     }
 });
 
