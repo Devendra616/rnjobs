@@ -31,7 +31,8 @@ export const facebookLogin = () => {
 const doFacebookLogin = async (dispatch) => {
     try {
         await Facebook.initializeAsync(FACEBOOK_APPID);
-        let result = await Facebook.logInWithReadPermissionsAsync({
+
+        let result = await Facebook.logInWithReadPermissionsAsync(FACEBOOK_APPID,{
             permissions: ['public_profile'],
           });
           let {type,token} = result;

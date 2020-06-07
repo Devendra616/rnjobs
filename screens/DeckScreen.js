@@ -26,10 +26,11 @@ class DeckScreen extends Component {
             }
 
         let {title, created_at,company, description,location} = job;
-        
+        //created_at = moment(created_at).format('DD/MM/YYYY hh:mm');
         description = shortenString(description);
-        const duration = moment(created_at).fromNow();
-        
+        //const duration = moment(created_at, 'DD/MM/YYYY hh:mm').fromNow();
+        const duration = moment(created_at).fromNow();        
+               
         // Sanitize any html elements like <b></b><p></p><li></li>
         const summary = description.replace(/<b>/g,'')
                                    .replace(/<\/b>/g,'')
@@ -85,7 +86,13 @@ class DeckScreen extends Component {
         )
     }
 
-    render() {
+    swippedLeft = () => {
+        return (
+            <Text style={{position:'absolute', color:'red', fontWeight:'bold', top:15, left:10}}>Reject</Text>
+        )
+    }
+
+    render() { 
         return (
             <View style={{ marginTop:10}}>
                 <Swipe 
@@ -94,6 +101,7 @@ class DeckScreen extends Component {
                     renderCard = {this.renderCard}
                     renderNoMoreCards = {this.renderNoMoreCards}
                     onSwipeRight = {job => this.props.likeJob(job)}
+                    onSwipeLeft= {this.swippedLeft}
                 />
             </View>
         )

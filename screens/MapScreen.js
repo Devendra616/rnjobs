@@ -26,7 +26,8 @@ class MapScreen extends Component {
         this.setState({region})
     }
 
-    onSearch = () => { this.setState({isSearching:true});
+    onSearch = () => { 
+        this.setState({isSearching:true});
         this.props.fetchJobs(this.state.region, (isSuccess)=> {
             this.setState({isSearching:false});
             if(!isSuccess) {

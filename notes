@@ -1,34 +1,8 @@
 
-class property vs instance property
-use static keyword to define class level property.
-This is usually used to define routes for screen
-
-With React Navigation 5.x, we need to pass the configuration when defining the screen:
-<Stack.Screen
-  name="Profile"
-  component={ProfileScreen}
-  options={{ headerShown: false }}
-/>
-
-we can't use 
-static navigationOptions = {
-    headerShown: false,
-  };
-https://reactnavigation.org/docs/upgrading-from-4.x/
-
-onslide pagingEnabled:
-When true, the scroll view stops on multiples of the scroll view's size when scrolling. This can be used for horizontal pagination.
-
-npm qs to parse object to query string
-latlng-to-zip to convert latitude-longitude combination to zipcode
-
-I am using github jobs as no API key is required
-
-
 You must use an API key to authenticate each request to Google Maps Platform APIs
 For calling google maps location data, we need API key. It can be generated from 
 https://developers.google.com/maps/documentation/geocoding/get-api-key
-I have set restriction for the key to be used only through my expo ip 192.168.43.125
+
 Save the key in the app.json file.
 {
   "expo": {
@@ -47,12 +21,5 @@ Save the key in the app.json file.
   }
 }
 
-//dont want map to pinch zoom in or zoom-out when swapped so just make it only readable element
-map with scrollEnabled={false}
 
 
-https://reactnavigation.org/docs/screen-options
-Specifying options for screens
-
-To delete the stored data with redux-persist for testing or moving to production , add .purge() to the end of persistStore
-let persistor = persistStore(store).purge();

@@ -94,9 +94,9 @@ class Swipe extends Component {
         }
     }
 
-    renderCards() { 
-        // if last card is already swapped        
-        if(this.state.currentIndex >= this.props.data.length) {
+    renderCards() {  
+      // if last card is already swapped or no jobs in the list  this.props.data.results is blank array when app initalised     
+        if((this.props.data.results && this.props.data.results.length === 0)|| this.state.currentIndex >= this.props.data.length) {
             return this.props.renderNoMoreCards();
         }
         

@@ -28,7 +28,7 @@ export const fetchJobs = (region, callback) => {
             
             let city = await jsonResult.results[0].address_components[6]['long_name']; //get city long name
            
-           // = await geocoding(region); console.log(222222); console.log(zip)
+           // = await geocoding(region); 
             const url = buildJobsUrl(city);
             const {data} = await axios.get(url);  
             if(!data || data.length ===0 ) {
