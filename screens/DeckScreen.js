@@ -9,6 +9,9 @@ import * as actions from '../actions';
 
 const SNIPPET_LENGTH=100;
 class DeckScreen extends Component {
+    state = {
+        swipeText:''
+    }
 
     renderCard(job){
         // Shortens the description to snippet
@@ -60,7 +63,8 @@ class DeckScreen extends Component {
                         style={{flex:1}}
                         cacheEnabled={Platform.OS === 'android'}
                         //initialRegion={initialRegion}
-                    />                                  
+                    />    
+                    {/* <Text style={styles.swipeText}>{this.state.swipeText}</Text>                               */}
                 </View>
                 <View style={styles.detailWrapper}>
                     <Text>{company}</Text>
@@ -118,6 +122,12 @@ const styles = StyleSheet.create({
         justifyContent:'space-around',
         marginBottom:10
     },
+    swipeText:{
+        color:'green',
+        fontSize:30,
+        position:'absolute',
+        
+    }
 });
 
 export default connect(mapStateToProps,actions)(DeckScreen);

@@ -86,11 +86,17 @@ class Swipe extends Component {
         const rotate = position.x.interpolate({
             inputRange:[-SCREEN_WIDTH*1.5,0,SCREEN_WIDTH*1.5],
             outputRange:['-120deg','0deg','120deg']
-        })
+        });
+
+        const interpolateColor = position.x.interpolate({
+            inputRange:[-SCREEN_WIDTH*1,0,SCREEN_WIDTH*1],
+            outputRange:['rgb(255,0,0)',  'rgb(255,250,250)', 'rgb(0,100, 0)']
+        });
 
         return {
             ...position.getLayout(),
-            transform:[{rotate}]
+            transform:[{rotate}],
+            backgroundColor: interpolateColor,
         }
     }
 
@@ -108,14 +114,18 @@ class Swipe extends Component {
             }
 
             //make only top card dragable, attach handler to currentCard
-            if(index=== this.state.currentIndex) {
+            if(index === this.state.currentIndex) {
                return (<Animated.View 
                         key={item[this.props.keyProp]}
                         style={ [ this.getCardStyle(),styles.cardStack]}  
                         {...this.state.panResponder.panHandlers}
                         >
                         {this.props.renderCard(item)}
-                        </Animated.View>);
+                        </Animated.View>
+                        
+                        
+                        
+                        );
             }
             
             //other items down the list, make them just card
