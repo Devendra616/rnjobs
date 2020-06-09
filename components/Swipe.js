@@ -78,7 +78,9 @@ class Swipe extends Component {
         Animated.spring(this.state.position,{
             toValue: {x:0,y:0}
         }).start();
-    }
+    } 
+    
+    
 
     getCardStyle() {
         const {position} = this.state;
@@ -87,11 +89,11 @@ class Swipe extends Component {
             inputRange:[-SCREEN_WIDTH*1.5,0,SCREEN_WIDTH*1.5],
             outputRange:['-120deg','0deg','120deg']
         });
-
+        // change colors as card is dragged right or left
         const interpolateColor = position.x.interpolate({
-            inputRange:[-SCREEN_WIDTH*1,0,SCREEN_WIDTH*1],
+            inputRange:[-SCREEN_WIDTH*0.25,0,SCREEN_WIDTH*0.5],
             outputRange:['rgb(255,0,0)',  'rgb(255,250,250)', 'rgb(0,100, 0)']
-        });
+        });       
 
         return {
             ...position.getLayout(),
@@ -100,8 +102,27 @@ class Swipe extends Component {
         }
     }
 
+    /* getTextStyle() {
+        const {position} = this.state;
+
+        const textOpacity = position.x.interpolate({
+            inputRange:[-SCREEN_WIDTH*.5,0,SCREEN_WIDTH*.5],
+            outputRange:[1,1,1]
+        });
+
+        return {
+            position:'absolute',
+            top:50,
+            left:0,justifyContent:'center',
+            textAlign:'center',
+            zIndex:9999,
+            fontSize:30,
+            opacity:textOpacity
+        }
+    } */
+
     renderCards() {  
-      // if last card is already swapped or no jobs in the list  this.props.data.results is blank array when app initalised     
+       // if last card is already swapped or no jobs in the list  this.props.data.results is blank array when app initalised     
         if((this.props.data.results && this.props.data.results.length === 0)|| this.state.currentIndex >= this.props.data.length) {
             return this.props.renderNoMoreCards();
         }
@@ -120,11 +141,13 @@ class Swipe extends Component {
                         style={ [ this.getCardStyle(),styles.cardStack]}  
                         {...this.state.panResponder.panHandlers}
                         >
+                        {/* <Animated.Text style={this.getTextStyle()}>
+                            ACCEPT/REJECT
+                        </Animated.Text> */}
                         {this.props.renderCard(item)}
-                        </Animated.View>
                         
-                        
-                        
+                        </Animated.View>        
+                                               
                         );
             }
             

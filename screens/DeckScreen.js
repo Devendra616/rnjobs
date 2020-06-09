@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 import * as actions from '../actions';
 
-const SNIPPET_LENGTH=100;
+const SNIPPET_LENGTH=150;
 class DeckScreen extends Component {
     state = {
         swipeText:''
@@ -25,7 +25,7 @@ class DeckScreen extends Component {
                 //re-trim if we are in the middle of a word and 
                 trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
             }
-            return trimmedString;
+            return trimmedString+"...";
             }
 
         let {title, created_at,company, description,location} = job;
@@ -88,13 +88,7 @@ class DeckScreen extends Component {
                 />
             </Card>
         )
-    }
-
-    swippedLeft = () => {
-        return (
-            <Text style={{position:'absolute', color:'red', fontWeight:'bold', top:15, left:10}}>Reject</Text>
-        )
-    }
+    }   
 
     render() { 
         return (
@@ -105,7 +99,7 @@ class DeckScreen extends Component {
                     renderCard = {this.renderCard}
                     renderNoMoreCards = {this.renderNoMoreCards}
                     onSwipeRight = {job => this.props.likeJob(job)}
-                    onSwipeLeft= {this.swippedLeft}
+                   
                 />
             </View>
         )
@@ -122,12 +116,12 @@ const styles = StyleSheet.create({
         justifyContent:'space-around',
         marginBottom:10
     },
-    swipeText:{
+    /* swipeText:{
         color:'green',
         fontSize:30,
         position:'absolute',
         
-    }
+    } */
 });
 
 export default connect(mapStateToProps,actions)(DeckScreen);

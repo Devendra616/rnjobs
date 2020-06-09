@@ -23,3 +23,54 @@ Save the key in the app.json file.
 
 
 
+const inputRange = [0, 1, 2, 3];
+const AnimatedText = Animated.createAnimatedComponent(Text);
+  const animationProps = {
+    duration: 500,
+    easing: Easing.out(Easing.linear),
+    isInteraction: false,
+    useNativeDriver: true,
+  };
+
+class Onboarding extends PureComponent {
+  activeDot = 0;
+  animationDot = new Animated.Value(0);
+
+  toggleOnButton = () => {
+      Animated.timing(this.animationDot, {
+        toValue: this.activeDot + 1,
+        ...animationProps,
+      }).start((endState) => {
+        if (endState.finished) {
+          this.activeDot = this.activeDot + 1;
+        }
+      });
+  }
+
+  renderButton = () => {
+    const opacityNext = this.animationDot.interpolate({
+      inputRange,
+      outputRange: [1, 1, 1, 0]
+    });
+    const opacityGetStarted = this.animationDot.interpolate({
+      inputRange,
+      outputRange: [0, 0, 0, 1]
+    });
+    return (
+      <TouchableOpacity style={styles.button} onPress={this.toggleOnButton}>
+        <AnimatedText style={[styles.buttonText, { opacity: opacityNext }]}>
+          Next
+        </AnimatedText>
+        <AnimatedText style={[styles.buttonText, {
+            top: normalize(isIOS ? 12 : 8), position: 'absolute', opacity: opacityGetStarted
+          }]}
+        >
+          Get started
+        </AnimatedText>
+      </TouchableOpacity>
+    );
+  }
+}
+
+
+
