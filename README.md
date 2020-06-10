@@ -13,111 +13,6 @@ An application in React Native to search Job listings near your area. User will 
 Technologies used :
   
 - React Native
-
-- Map : react-native-maps
-
-- Navigation
-
-- Facebook Authentication
-
-- Github jobs
-
-  
-
-# Project Setup
-
-On your terminal type
-  
-
-npm install
-expo start
-
-  
-
-I am using react-navigation v5 which is different from v4 in many respect.
-
-  
-
-# Screens
-
-- WelcomeScreen
-
-- AuthScreen
-
-- MapScreen
-
-- DeckScreen
-
-- ReviewScreen
-
-- SettingScreen
-
-  
-
-### Welcome Screen
-
-  
-
-Welcome screen shows manual for the App. Three or more slides are shown with a button at last slide to trigger navigation to Auth screen. The Welcome Screen is shown only to unregistered users, after the user is authenicated, the screen need not be shown.
-
-  
-
-### Auth Screen
-
-Auth screen is for authenication of the user using facebook login. We used expo-facebook authentication method.
-
-  
-
-### Map Screen
-
-User sets location on the map to view jobs. Once the location is set, the user gets job listings for nearby location set on the map screen. Github jobs has jobs listing mostly from Americal and Europe. I did not find any jobs in India at time of testing.
-
-  
-
-### Deck Screen
-
-The Deck screen shows the listings of jobs for that location. Presently, the jobs shows only for **Javascript** profile. The deck has cards of jobs which can be **swiped left** to *discard* and **swiped right** to *apply*. Cards swiped right move to myJobs which is review screen.
-
-  
-
-### Review Screen
-
-The Review Screen is the myJobs screen where we get jobs which we have filtered to apply.
-
-  
-
-### Settings Screen
-
-The user setting screen is where we can clear map location and myJobs lists.
-
-  
-
-# Flow Diagrams
-### Main Flow
-[![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcblx0QVtXZWxjb21lIFNjcmVlbl0gLS0-IEIoQXV0aCBTY3JlZW4pIC0tPiBDKE1haW4gRmxvdylcblx0RFtNYWluIEZsb3ddIC0tPkVbTWFwIFNjcmVlbl0gLS0-IEZbRGVjayBTY3JlZW5dIC0tPiBHW1JldmlldyBGbG93XVxuXHRIW1JldmlldyBGbG93XSAtLT5JW1JldmlldyBTY3JlZW5dLS0-IEpbU2V0dGluZyBzY3JlZW5dXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcblx0QVtXZWxjb21lIFNjcmVlbl0gLS0-IEIoQXV0aCBTY3JlZW4pIC0tPiBDKE1haW4gRmxvdylcblx0RFtNYWluIEZsb3ddIC0tPkVbTWFwIFNjcmVlbl0gLS0-IEZbRGVjayBTY3JlZW5dIC0tPiBHW1JldmlldyBGbG93XVxuXHRIW1JldmlldyBGbG93XSAtLT5JW1JldmlldyBTY3JlZW5dLS0-IEpbU2V0dGluZyBzY3JlZW5dXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
-
-### Auth Screen
-
-[![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcblx0QVtBdXRoIFNjcmVlbl0gLS0-fEluaXRpYXRlIEZiIGxvZ2lufCBCe0lzIEF1dGhlbnRpY2F0ZWR9XG5cdEIgLS0-fFllc3wgQ1tTZW5kIHRvIE1hcFNjcmVlbl1cblx0QiAtLT58Tm98IERbQXR0ZW1wdCB0byBsb2dpbiB3aXRoIEZhY2Vib29rXVxuXHREIC0tPiBFW0dldCBUb2tlbl1cblx0RSAtLT58U2F2ZSBUb2tlbiBmb3IgZnV0dXJlfCBDXG5cdFx0XHRcdFx0IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcblx0QVtBdXRoIFNjcmVlbl0gLS0-fEluaXRpYXRlIEZiIGxvZ2lufCBCe0lzIEF1dGhlbnRpY2F0ZWR9XG5cdEIgLS0-fFllc3wgQ1tTZW5kIHRvIE1hcFNjcmVlbl1cblx0QiAtLT58Tm98IERbQXR0ZW1wdCB0byBsb2dpbiB3aXRoIEZhY2Vib29rXVxuXHREIC0tPiBFW0dldCBUb2tlbl1cblx0RSAtLT58U2F2ZSBUb2tlbiBmb3IgZnV0dXJlfCBDXG5cdFx0XHRcdFx0IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
-
-  
-  
-
-# Settings for facebook authenication on Expo
-
-
-# React Native Job Board
-
-  ##  Live Demo on Expo: 
-With an Android phone, you can scan this QR code with your Expo mobile app to load this project immediately.          [online-link](https://expo.io/@devsingh/rn-jobs)
-![](data:image/png;base64,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)
-
-# Description
-An application in React Native to search Job listings near your area. User will go to map and get his location where to search. It will trigger API search for jobs in that location. User can then apply for jobs, from the search list based on description.
-
-Technologies used :
-  
-- React Native
 - Map : react-native-maps
 - Navigation
 - Facebook Authentication
@@ -145,10 +40,10 @@ I am using react-navigation v5 which is different from v4 in many respect.
 For specifying options for each screen used [docs](https://reactnavigation.org/docs/screen-options).
 ### Welcome Screen
   
+![Welcome Screen](https://res.cloudinary.com/nmdc/video/upload/v1591807676/RN-Jobs/Welcome%20action%20gif.gif)
 
 Welcome screen shows manual for the App. Three or more slides are shown with a button at last slide to trigger navigation to Auth screen. The Welcome Screen is shown only to unregistered users, after the user is authenicated, the screen need not be shown.
-
-  
+ 
 
 ### Auth Screen
 
@@ -165,7 +60,7 @@ User sets location on the map to view jobs. Once the location is set, the user g
 ### Deck Screen
 
 The Deck screen shows the listings of jobs for that location. Presently, the jobs shows only for **Javascript** profile. The deck has cards of jobs which can be **swiped left** to *discard* and **swiped right** to *apply*. Cards swiped right move to myJobs which is review screen.
-
+![Swapping Action](https://res.cloudinary.com/nmdc/video/upload/v1591807676/RN-Jobs/swapping%20action%20gif.gif)
   
 
 ### Review Screen
@@ -312,3 +207,9 @@ Testing of push notification with token :
 
 - A text input where user can set his criteria to search job terms like Java, React, Mobile, .Net etc. Presetly there is search for Javascript only.
 - Label on card to show accept/reject on swapping right/left respectively.
+
+  
+
+# Build
+
+Run expo ```expo build:android``` or ```expo build:ios```. If you don't already have a packager running for this project, expo will start one for you.
